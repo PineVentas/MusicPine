@@ -2,15 +2,15 @@
 
 module.exports = {
   TOKEN: "",
-  language: "en",
+  language: "es",
   ownerID: ["1044072113247633418", ""], 
   mongodbUri : "mongodb+srv://pineda:pinegra@discordbot.yavpm.mongodb.net/?retryWrites=true&w=majority",
   setupFilePath: './commands/setup.json',
   commandsDir: './commands',  
   embedColor: "#1db954",
-  activityName: "YouTube Music", 
+  activityName: "Pinegra Music", 
   activityType: "LISTENING",  // Available activity types : LISTENING , PLAYING
-  SupportServer: "https://discord.gg/xQF9f9yUEM",
+  SupportServer: "https://discord.gg/bdnxde8k",
   embedTimeout: 5, 
   errorLog: "", 
   nodes: [
