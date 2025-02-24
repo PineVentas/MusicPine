@@ -99,7 +99,7 @@ function initializePlayer(client) {
                 iconURL: musicIcons.playerIcon,
                 url: config.SupportServer
             })
-            .setFooter({ text: `Desarrollado Por: Pineda | Prime Music v1.2`, iconURL: musicIcons.heartIcon })
+            .setFooter({ text: `Desarrollado Por: Pineda | Pine Music v1.2`, iconURL: musicIcons.heartIcon })
             .setTimestamp()
             .setDescription(  
                 `- **Title:** [${track.info.title}](${track.info.uri})\n` +
