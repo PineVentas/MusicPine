@@ -95,7 +95,7 @@ function initializePlayer(client) {
             const attachment = new AttachmentBuilder(cardPath, { name: 'musicard.png' });
             const embed = new EmbedBuilder()
             .setAuthor({ 
-                name: 'Ahora Suena..', 
+                name: 'Ahora Suena...', 
                 iconURL: musicIcons.playerIcon,
                 url: config.SupportServer
             })
