@@ -22,7 +22,7 @@ async function volume(client, interaction, lang) {
             return;
         }
 
-        if (volume < 0 || volume > 100) {
+        if (volume < 0 || volume > 200) {
             return interaction.reply({ content: lang.volume.volumeRangeError, ephemeral: true });
         }
 
@@ -57,11 +57,11 @@ async function volume(client, interaction, lang) {
 
 module.exports = {
     name: "volume",
-    description: "Set the volume of the current song",
+    description: "Establecer el volumen de la canción actual",
     permissions: "0x0000000000000800",
     options: [{
         name: 'level',
-        description: 'Volume level (0-100)',
+        description: 'Volume level (0-200)',
         type: ApplicationCommandOptionType.Integer,
         required: true
     }],
