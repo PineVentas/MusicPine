@@ -95,18 +95,18 @@ function initializePlayer(client) {
             const attachment = new AttachmentBuilder(cardPath, { name: 'musicard.png' });
             const embed = new EmbedBuilder()
             .setAuthor({ 
-                name: 'Playing Song..', 
+                name: 'Ahora Suena..', 
                 iconURL: musicIcons.playerIcon,
                 url: config.SupportServer
             })
             .setFooter({ text: `Desarrollado Por Pineda | Pine Music v1.2`, iconURL: musicIcons.heartIcon })
             .setTimestamp()
             .setDescription(  
-                `- **Title:** [${track.info.title}](${track.info.uri})\n` +
-                `- **Author:** ${track.info.author || 'Unknown Artist'}\n` +
-                `- **Length:** ${formatDuration(track.info.length)}\n` +
-                `- **Requester:** ${requester}\n` +
-                `- **Source:** ${track.info.sourceName}\n` + '**- Controls :**\n 🔁 `Loop`, ❌ `Disable`, ⏭️ `Skip`, 📜 `Queue`, 🗑️ `Clear`\n ⏹️ `Stop`, ⏸️ `Pause`, ▶️ `Resume`, 🔊 `Vol +`, 🔉 `Vol -`')
+                `- **Nombre De La Canción:** [${track.info.title}](${track.info.uri})\n` +
+                `- **Autor:** ${track.info.author || 'Unknown Artist'}\n` +
+                `- **Duración:** ${formatDuration(track.info.length)}\n` +
+                `- **Solicitada Por:** ${requester}\n` +
+                `- **Fuente:** ${track.info.sourceName}\n` + '**- Controles :**\n 🔁 `Bucle`, ❌ `Desactivar`, ⏭️ `Saltar`, 📜 `Cola`, 🗑️ `Limpiar`\n ⏹️ `Detener`, ⏸️ `Pausar`, ▶️ `Reanudar`, 🔊 `Vol +`, 🔉 `Vol -`')
             .setImage('attachment://musicard.png')
             .setColor('#FF7A00');
 
@@ -161,7 +161,7 @@ function initializePlayer(client) {
             } else {
                 console.log(`Autoplay is disabled for guild: ${guildId}`);
                 player.destroy();
-                await channel.send("🎶 **Queue has ended. Autoplay is disabled.**");
+                await channel.send("🎶 **La cola ha terminado. La reproducción automática está deshabilitada.**");
             }
         } catch (error) {
             console.error("Error handling autoplay:", error);
@@ -240,7 +240,7 @@ async function handleInteraction(i, player, channel) {
             break;
         case 'skipTrack':
             player.stop();
-            await sendEmbed(channel, "⏭️ **Player will play the next song!**");
+            await sendEmbed(channel, "⏭️ **Has Saltado A La Siguiente Canción!**");
             break;
         case 'disableLoop':
             disableLoop(player, channel);
@@ -255,22 +255,22 @@ async function handleInteraction(i, player, channel) {
         case 'stopTrack':
             player.stop();
             player.destroy();
-            await sendEmbed(channel, '⏹️ **Playback has been stopped and player destroyed!**');
+            await sendEmbed(channel, '⏹️ **La reproducción ha sido detenida y el usuario la ha destruido!**');
             break;
         case 'pauseTrack':
             if (player.paused) {
-                await sendEmbed(channel, '⏸️ **Playback is already paused!**');
+                await sendEmbed(channel, '⏸️ **La reproducción ya está en pausa!**');
             } else {
                 player.pause(true);
-                await sendEmbed(channel, '⏸️ **Playback has been paused!**');
+                await sendEmbed(channel, '⏸️ **La reproducción ha sido pausada!**');
             }
             break;
         case 'resumeTrack':
             if (!player.paused) {
-                await sendEmbed(channel, '▶️ **Playback is already resumed!**');
+                await sendEmbed(channel, '▶️ **La reproducción ya se ha reanudado.!**');
             } else {
                 player.pause(false);
-                await sendEmbed(channel, '▶️ **Playback has been resumed!**');
+                await sendEmbed(channel, '▶️ **La reproducción se ha reanudado.!**');
             }
             break;
         case 'volumeUp':
@@ -289,12 +289,12 @@ async function sendEmbed(channel, message) {
 }
 
 function adjustVolume(player, channel, amount) {
-    const newVolume = Math.min(100, Math.max(10, player.volume + amount));
+    const newVolume = Math.min(200, Math.max(10, player.volume + amount));
     if (newVolume === player.volume) {
-        sendEmbed(channel, amount > 0 ? '🔊 **Volume is already at maximum!**' : '🔉 **Volume is already at minimum!**');
+        sendEmbed(channel, amount > 0 ? '🔊 **¡El volumen ya está al máximo!**' : '🔉 **El volumen ya está al mínimo.!**');
     } else {
         player.setVolume(newVolume);
-        sendEmbed(channel, `🔊 **Volume changed to ${newVolume}%!**`);
+        sendEmbed(channel, `🔊 **El volumen cambió a: ${newVolume}%!**`);
     }
 }
 
@@ -327,7 +327,7 @@ function showNowPlaying(channel, player) {
     }
 
     const track = player.current.info;
-    sendEmbed(channel, `🎵 **Now Playing:** [${track.title}](${track.uri}) - ${track.author}`);
+    sendEmbed(channel, `🎵 **Ahora Suena:** [${track.title}](${track.uri}) - ${track.author}`);
 }
 
 function createActionRow1(disabled) {
